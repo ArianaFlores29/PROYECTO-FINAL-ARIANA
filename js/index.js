@@ -53,20 +53,7 @@ let intervalo;
 
 //_------------------------------------------------------------------------//
 
-//FUNCIONES MENÚ//
 
-//Le doy un addEventlistener al botón de abrir menú para que aparezca el nav con la clase visible definida en css
-abrirMenu.addEventListener('click', () => {
-    menu.classList.add('visible');
-
-})
-
-//Le doy un addEventlistener de cerrar al botón de abrir menú para que aparezca el nav con la clase definida en css
-cerrarMenu.addEventListener('click', e => {
-    e.preventDefault();
-    menu.classList.remove('visible')
-})
-//FUNCIONES MENÚ//
 
 
 
@@ -157,6 +144,19 @@ function finIntervalo(){
 inicioIntervalo()
 
 
+//FUNCIONES MENÚ//
 
+//Le doy un addEventlistener al botón de abrir menú para que aparezca el nav con la clase visible definida en css
+abrirMenu.addEventListener('click', () => {
+    menu.classList.add('visible');
+
+})
+
+//Le doy un addEventlistener de cerrar al botón de abrir menú para que aparezca el nav con la clase definida en css
+cerrarMenu.addEventListener('click', e => {
+    e.preventDefault();
+    menu.classList.remove('visible')
+})
+//FUNCIONES MENÚ//
 
 
