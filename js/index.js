@@ -51,11 +51,7 @@ let indiceActual= 0;
 //Variable intervalo vacia porque lo definire más adelante con setInterval
 let intervalo;
 
-//_------------------------------------------------------------------------//
-
-
-
-
+//------------------------------------------------------------------------//
 
 //OPCIONES DE DISEÑO 
 
