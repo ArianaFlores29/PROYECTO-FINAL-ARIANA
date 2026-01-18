@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto Bar-restaurante Angelus</title>
+    <link rel="icon" href="media/GAFF.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/index.css">
+    <script defer src="js/index.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <main>
+        <!--BANNER FICHAS DE PROYECTO-->
+        <section class="project flex-row">
+            <!--Contenedor principal-->
+            <div class="banner__block">
+                <div class="banner__title"> <!--Contenedor de título-->
+                    <h1>BAR-RESTAURANT L'ANGELUS</h1><!--Título de la página-->
+                </div>
+            </div>
+        </section>
+        <!-- / BANNER FICHAS DE PROYECTO-->
+
+        <!--OPCIONES DE DISEÑO-->
+        <section class="options">
+            <div class="options__block">
+                <h2 class="option__title">DISEÑO DE CARTA</h2>
+                <ul class="options__list">
+                    <li class="option">Diseño 1</li>
+
+                    <li class="option">Diseño 2</li>
+
+                </ul>
+
+                <div class="options__content">
+                    <div class="text">
+                        <div class="design__objective">
+                            <h3>Objetivo</h3>
+                            <p>Realizar una carta desde cero para el restaurante, ya que se trataba de nueva apertura.</p>
+                        </div>
+                        <div class="design__description">
+                            <h3>Descripción</h3>
+                            <p>El local no contaba con ninguna identidad visual definida, por ello quise plasmar lo que era un principio, un negocio completamente familiar que buscaba transmitir cercanía con sus clientes. Es por ello que se realizó un diseño donde se ilustraron a los miembros de la familia, representados por lo que más caracteriza a cada uno de ellos. </p>
+                        </div>
+
+                        <div class="design__images">
+                            <picture>
+                                <source srcset="media/angelusopcion1.webp" type="image/webp">
+                                <img src="media/angelusopcion1.jpg" alt="diseño de carta" class="image" loading="lazy">
+                            </picture>
+
+                            <picture>
+                                <source srcset="media/angelusopcion1.2.webp" type="image/webp">
+                                <img src="media/angelusopcion1.2.jpg" alt="" class="image" loading="lazy">
+                            </picture>
+                            
+                        </div>
+
+                        <div class="big">
+                            <button class="close__image" title="cerrar-imagen"><i class="ri-close-circle-line icon"></i></button>
+                            <img class="big__image" src="" alt="">
+                        </div>
+                    </div>
+
+                    <div class="text">
+                        <div class="design__objective">
+                            <h3>Objetivo</h3>
+                            <p>Se realizó un diseño de carta desde cero con el objetivo de plasmar visualmente la
+                                esencia del restaurante.</p>
+                        </div>
+                        <div class="design__description">
+                            <h3>Descripción</h3>
+                            <p>En una primera etapa se desarrolló un diseño que transmitía una esencia familiar y
+                                cercana, acorde con la naturaleza del negocio. <br>Meses después, los propietarios
+                                decidieron renovar por completo la imagen del local, incorporando color y personalidad
+                                mediante la contratación del artista @artmilcar, quien realizó un mural personalizado en
+                                la pared. Este cambio supuso la necesidad de rediseñar íntegramente la carta, con el
+                                objetivo de adaptarla a la nueva identidad visual del espacio y dotrla de un significado
+                                coherente y representativo</br></p>
+                        </div>
+
+                        <div class="design__images">
+                            <picture>
+                                <source srcset="media/muralrestaurante.webp" type="image/webp">
+                                <img src="media/muralrestaurante.jpg" alt="mural" class="image">
+                            </picture>
+
+                            <picture>
+                                <source srcset="media/angelus2.webp" type="image/webp">
+                                <img src="media/cartaangelus2.jpg" alt="diseño de carta" class="image">
+                            </picture>
+                           
+                            <picture>
+                                <source srcset="media/angelus3.webp" type="image/webp">
+                                <img src="media/angelus3.jpg" alt="diseño de carta" class="image">
+                            </picture>
+                        </div>
+
+                        <div class="big">
+                            <button class="close__image" title="cerrar-imagen"><i class="ri-close-circle-line icon"></i></button>
+                            <img class="big__image" src="" alt="">
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- / OPCIONES DE DISEÑO-->
+        
+      
+        <!--FORMULARIO DE CONTACTO-->
+
+        <section class="contact" id="contacto">
+            <!--Contenedor principal-->
+            <div class="contact__block flex-column">
+                <!--Contenedor que contiene el título y formulario-->
+                <div class="contact__form flex-column">
+                    <!--Título de la seccion-->
+                    <h2>Contáctame y hablamos</h2>
+                    <!--Formulario, sin action porque necesitaria back-end-->
+                    <form class="form flex-column" action="#" method="GET">
+                        <!--Contenedot de nombre y apellidos-->
+                        <div class="name__contact flex-row">
+                            <!--Define el campo del formulario, en este caso el nombre-->
+                            <label for="name">Nombre</label>
+                            <!--Campo donde escribirá el usuario.Es tipo texto, para que pueda escribir. Nombre e id iguales. Placeholder es lo que verá el usuario en el campo para guiarlo. Required indica que es obligatorio rellenarlo para enviar el formulario.-->
+                            <input type="text" name="name" id="name" placeholder="Nombre" class="name__required" required>
+
+                            <label for="surname">Apellidos</label>
+                            <input type="text" name="surname" id="surname" placeholder="Apellidos"
+                                class="surname__required" required>
+
+                        </div>
+                        <div class="contact__method flex-row">
+                            <label for="email">E-mail</label>
+                            <input type="text" name="e-mail" id="email" placeholder="E-mail" required>
+
+                            <label for="number">Número de teléfono</label>
+                            <input type="text" name="number" id="number" placeholder="Número de teléfono" required>
+                        </div>
+
+                        <label for="services">Servicios</label>
+                        <!--Es un campo de selección, donde se muestran diferentes opciones para que el usuario pueda elegir entre los diferentes servicios-->
+                        <select name="services" id="services" required>
+                            <!--Opciones del campo de selección-->
+                            <option value="webdesign">Diseño web</option>
+
+                            <option value="graphicdesign">Diseño gráfico</option>
+
+                            <option value="socialmedia">Social media</option>
+                        </select>
+
+                        <label for="comment">Comentario</label>
+                        <!--Permite al usuario poder añadir un comentario largo-->
+                        <textarea name="comment" id="comment" placeholder="Explícame que necesitas"></textarea>
+                        <!--Este input no necesita label porque con value ya se ve para que sirve. Se trata del botón que debería enviar la información rellenada en el formulario-->
+                        <input type="Submit" value="Enviar">
+
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- / FORMULARIO DE CONTACTO-->
+    </main>
+    <!-- / MAIN -->
+    <!--FOOTER-->
+    <footer> 
+        <!--Contenedor principal-->
+        <div class="footer__block flex-row">
+            <!--Contenedor del logo y vías de contacto-->
+            <div class="footer__contact flex-column">
+                <!--logotipo-->
+                <picture>
+                    <source srcset="media/logotipo.webp" type="image/webp"> <!--formato webp del logotipo-->
+                    <img src="media/logotipo.webp" alt="logo"> <!--formato svg del logotipo-->
+                </picture>
+               <!--Contenedor de vías de contacto-->
+                <div class="footer__icons flex-row"> 
+                    <!--Enlace a instagram-->
+                    <a href="#" title="instagram"><i class="ri-instagram-line"></i> @_aaaariii_</a>
+                    <!--Enlace a correo electrónico, permite enviar correo directamente-->
+                    <a href="mailto:arfloflo29@gmail.com" title="email"><i class="ri-mail-line"></i> arfloflo29@gmail.com</a>
+                    <!--Enlace a número de teléfono, permite llamar directamente-->
+                    <a href="tel:+34642588174" title="telefono"><i class="ri-phone-line"></i> 642588174</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- / FOOTER-->
+</body>
+
+</html>

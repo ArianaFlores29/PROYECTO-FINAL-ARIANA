@@ -1,0 +1,918 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*DEFINO ESTILOS FIJOS DE ETIQUETAS*/
+
+img{
+    max-width: 100%;
+}
+
+ul, ol, li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+    font: var(--f-link);
+}
+
+h2{
+    font:var(--f-lg);
+}
+
+body{
+    background-color: var(--c-grey);
+}
+
+p{
+    font:var(--f-body);
+}
+
+input{
+    width:100%;
+    padding: var(--s-xs);
+    border:2px var(--c-green) solid;
+    border-radius: var(--r-sm);
+}
+
+select{
+    padding:var(--s-xs);
+    border:2px var(--c-green) solid;
+    border-radius: var(--r-sm);
+}
+
+textarea{
+    max-width:100%;
+    padding: var(--s-xs);
+    border:2px var(--c-green) solid;
+    border-radius: var(--r-sm);
+}
+
+i{
+    font:var(--f-md);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*---/ ESTILOS FIJOS ---*/
+
+/*DEFINO VARIABLES*/
+
+:root{
+    /*Fuentes*/ 
+
+    /*En el xl defino el tamaño minimo, ideal y máximo, para que así se adapte correctamente a las diferentes pantallas. Se utilizará para el H1*/
+    --f-xl: bold clamp(2rem, 8vw, 6rem) "Libre Baskerville", serif;
+
+    --f-lg: normal 2.30em "Libre Baskerville", serif;
+    
+    --f-md: normal 1.1875em "Fira Code", sans-serif;
+
+    --f-sm: normal .8438em "Fira Code", serif;
+
+    --f-xs: bold .6875em "Fira Code", serif;
+
+    --f-body: normal .8125em "Fira Code", sans-serif;
+
+    --f-link: normal .75rem "Fira Code", sans-serif;
+
+    /*Colores*/
+
+    --c-green:#68894b;
+    --c-secondary-green:#b3c4a2;
+    --c-grey:#f1f1f1;
+    --c-black:#000000;
+    --c-white:#ffffff;
+
+    /*Espacios*/
+
+    --s-xl: 4.5rem;
+    --s-lg: 3.5rem;
+    --s-md: 2.5rem;
+    --s-sm: 1rem;
+    --s-xs: 0.5rem;
+
+    /*Radios de los bordes*/
+
+    --r-xl:6rem;
+    --r-sm:.500rem;
+}
+
+/*DEFINO CLASES PARA LOS ELEMENTOS*/
+
+
+.flex-row{
+    display:flex ;
+    flex-direction: row;
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+} 
+
+.logo{
+    max-width: 5rem;
+}  
+.btn{
+    font: var(--f-link);
+    background-color: #b3c4a2;
+    color:#ffffff;
+    border-radius: var(--r-sm);
+    padding: var(--s-xs) var(--s-md);
+    font: var(--f-link);
+    transition:transform .08s ease, background-color .08s ease;
+}
+
+/*HOVER Y ACTIVE*/
+.btn:hover{
+    background-color: var(--c-green);
+    transform: scale(0.95);
+}
+
+.btn:active{
+    transform: scale(1.1);
+}
+
+.option:hover{
+    transform:scale(0.95);
+    color:var(--c-secondary-green);
+}
+
+.nav__element{
+    transition: transform .08s ease;
+}
+
+.nav__element:hover{
+    transform: scale(1.1);
+    color: var(--c-green);
+    font-weight: bold;
+}
+
+.nav__element:active{
+    transform: scale(.95);
+}
+
+.nav__element:last-child a{
+    font-weight: bold;
+}
+
+.image:hover{
+    transform:scale(.98);
+}
+
+.image:active{
+    transform:scale(1.1);
+}
+
+.close__image:hover{
+    transform: scale(.98);
+    color:var(--c-green);
+}
+
+.close__image:active{
+    transform:scale(1.1);
+}
+
+
+input::placeholder{
+    font:var(--f-link);
+}
+
+input[type="submit"]{
+    background-color: var(--c-green);
+    border:1px var(--c-white) solid;
+    font:var(--f-link);
+    color:var(--c-white);
+    transition:background-color .08s ease, color .08s ease, border .08s ease, transform 0.6s ease;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover{
+    background-color: var(--c-white);
+    color:var(--c-green);
+    border:1px var(--c-green) solid;
+    transform: scale(.95);
+
+}
+
+input[type="submit"]:active{
+    transform: scale(1.1);
+}
+
+/*-------------------------------------------------------------*/
+
+/*HEADER*/
+header{ /*Se encuntra en display flex para que los elementos se ordenen en fila*/
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between; /*Genera espacio entre los elementos principales*/
+    align-items: center; /*Centra elementos en eje secundario, este caso el vertical*/
+    position: fixed; /*Hace que se quede fijo en la pantalla aunque hagamos scroll*/
+    top: 0; /*Se queda fijo en lo alto de la pantalla*/
+    z-index:2; /*Para que no se meta debajo de ningún elemento*/
+    gap: var(--s-md);
+    padding: 1.65rem; /*Utilizo rem y no ninguna variable porque ninguna se ajustaba como me encajaba*/
+    width:100%; /*Ocupa todo el ancho disponible de la pantalla*/
+    height: var(--s-md); /*Altura definida de 2.5rem*/
+    border-radius: var(--r-sm); /*Los bordes tienen una redondez muy sutil*/
+    border: .0625rem solid var(--c-white); /*estilo del borde*/
+    background-color: rgba(0, 0, 0, 0.1);  /*Hace el efecto como si fuera difuminado pero transparente*/
+    backdrop-filter: blur(0.5rem);
+    -webkit-backdrop-filter: blur(0.5rem);
+
+    & .abrir-menu{ /*es lo que nos permite abrir el menú en responsive, definido en media queries*/
+        display: none;
+    }
+    
+    & nav{ /*navegador de la web*/
+        
+        & .cerrar-menu{ /*Lo que nos permite cerrar el menú en responsive*/
+            display: none;
+        }
+        
+        & ul{ /*Lista de elementos del nav*/
+            display: flex;
+            gap: var(--s-lg);
+
+        }
+    }
+}
+/* / HEADER */
+
+/*BANNER*/
+
+.banner{ /*Clase de la seccion del banner*/
+    /*clase del contenedor que tiene el fondo del banner. Está en flex column */
+    & .banner__background{
+        align-items:center; /*Centra elementos en el eje secundario, en este caso el horizontal */
+        justify-content: end;/*Coloca elementos al final del eje principal, en este caso vertical*/
+        background-image: url(../media/FONDO\ BANNER.webp);/*Fondo principal del banner*/
+        background-repeat: no-repeat; /*Hace que la imagen no se repita*/
+        background-size: cover;/*La imagen de fondo cubre todo el espacio disponible en el contenedor*/
+        background-position: center; /*Centra la imagen de fondo*/
+        height: 100vh;/*Ocupa todo el alto de la pantalla*/
+        width: 100%;/*Ocupa 100% del ancho del contenedor padre, que en este caso seria la propia sección*/
+        padding: var(--s-xl);/*Añade 4.5rem de relleno en el contenedor*/
+        
+        & .banner__content{
+            /*Clase del contenedor que contiene el contenido de texto y botón del banner, se encuentra en flex-column*/
+            align-items: start; /*Alínea los elementos al principio del eje secundario, en este caso horizontal*/
+            max-width: 100%; /*El ancho máximo de este contenedor no será más del 100% de su contenedor padre*/
+            gap: var(--s-sm); /*Separa elementos del contenedor 1rem*/
+
+            & h1{ /*Título principal de la página, no se repite más h1*/
+                font:var(--f-xl); /* Define el tamaño de fuente de este h1*/
+                color: var(--c-green); /*Define el color de la fuente*/
+            }
+
+            & h2{ /*Subtítulo del banner*/
+                color: var(--c-black);
+                font:var(--f-md);
+            }
+
+        }
+    }
+}
+
+/* / BANNER*/
+
+/*-----------------------------------------------------------------------------------*/
+
+/*SOBRE MÍ*/
+
+.about-me{ /*Clase de la sección de sobre mí*/
+    /*Contenedor principal de la sección, se encuentra en flex column */
+    & .about-me__block{
+        align-items: center; /*Centra elementos en el eje secundario, en este caso el horizontal */
+        justify-content: center; /*Centra elementos en el eje principal, en este caso el vertical */
+        height: auto; /*La altura se ajusta automáticamente al contenido*/
+        padding: var(--s-md); /*Añade relleno al contenedor de 2.5 rem*/
+        background-image: url("../media/FONDO\ SECCION\ HERO.webp");/*fondo del contenedor*/
+        background-repeat: no-repeat; /*Hace que la imagen no se repita*/
+        background-size: cover; /*La imagen de fondo cubre todo el espacio disponible en el contenedor*/
+        background-position: center;/*Centra la imagen de fondo*/
+        background-attachment: fixed; /*Hace que la imagen se quede fija al hacer scroll*/
+
+
+        & .about-me__content{ /*contenedor que contiene el contenido de texto y carrusel tipo GIF, se encuentra en flex row*/
+            flex-wrap:wrap-reverse; /*Hace que el contenido salte de línea y no se salga del contenedor. En este caso, hace un salto en sentido inverso de como están organizados los elementos*/
+            justify-content: center; /*Centra contenido en eje principal, en este caso horizontal*/
+            gap:var(--s-lg); /*Separa los elementos, en este caso el contenido de texto y el carrusel. Añade un espacio de 3.5 rem*/
+            padding: var(--s-sm); /*Añade relleno de 1rem*/
+            width: 60rem; /*Ancho del contenedor*/
+            max-width: 100%; /*No puede superar los 60 rem de ancho en ningún caso*/
+            
+            & .about-me__carousel{ /*Contenedor del carrusel de imágenes*/
+                flex:1 0 275px; /*Indica que el elemento inicia con 275px, crece si hay espacio y no se encoge*/
+                height: auto; /*Altura automática al contenido*/
+                max-width: 100%; /*garantiza que no supere el ancho del contenedor*/
+                box-shadow: /*Añade sombra al contenedor para dar efecto de relieve*/
+                4px 4px 6px rgba(0, 0, 0, 0.15), /*Sombra negra suave hacia abajo derecha*/
+                -4px -4px 6px rgba(255, 255, 255, 0.5); /*Sombra blanca suave hacia arriba izquierda*/
+                border-radius: var(--r-sm); /*Da redondez de .500rem a los bordes del contenedor del carrusel*/ 
+
+                & img{
+                    border: 0.5px solid var(--c-green);/*Borde verde de 0.5px alrededor de la imagen*/
+                    border-radius: var(--r-sm);/*redondez de .500rem a los bordes*/
+                }
+    
+            }
+
+            & .about-me__text{ /*Contenedor del carrusel de texto, se encuentra en flex column*/
+                flex:1 0 275px; /*Indica que el elemento inicia con 275px, crece si hay espacio y no se encoge*/
+                max-width: 100%; /*garantiza que no supere el ancho del contenedor*/
+                justify-content: center; /*Centra contenido en eje principal, en este caso el vertical*/
+                gap: var(--s-sm); /*Espacio de 1rem entre elementos del contenedor*/
+
+                & h3{ /*Subtítulo*/
+                    font:var(--f-md); /*Tamaño de la fuente de 2.5rem*/
+                    color:var(--c-green); /*Color de la fuente*/
+                }
+
+                & p{
+                    line-height: 1.5rem; /*Es el espacio que hay entre líneas en los párrafos*/
+                }
+            }
+
+        }
+    }
+}
+
+#carousel{ /*Id del carrusel para poder darle estilo*/
+    width: 100%; /*Hace que ocupe el ancho del 100% de su contenedor padre*/
+    height:100%;/*Hace que ocupe la altura del 100% de su contenedor padre*/
+    object-fit: cover; /*La imagen ocupa todo el contenedor*/
+    
+}
+/* / SOBRE MÍ */
+
+/*-----------------------------------------------------------------------------------*/
+
+/*CARACTERÍSTICAS*/
+
+.icons{ /*sección de iconos con las características */
+    background-color:var(--c-secondary-green); /*Fondo de la sección*/
+    display: flex; /*Le pongo display flex para poder alinear bien el contenedor prinicpal*/
+    justify-content: center; /*Alínea elemento en el eje principal, en este caso horizontal*/
+
+    & .icons__block{ /*Contenedor principal, se encuentra en flex column*/
+        background-color:var(--c-secondary-green); /*Fondo contenedor*/
+        flex-wrap: wrap; /*Genera salto de línea para que no se salga el contenido*/
+        gap:var(--s-md); /*Espacio entre elementos de 1rem*/
+        padding: var(--s-md);/*Relleno en el contenedor de 2.5rem*/
+        justify-content: center; /*Centra elementos en el eje principal, en este caso el vertical*/
+        align-items: center;/*Centra elementos en el eje secundario, en este caso el horizontal*/
+        width: 60rem;/*Contenedor tiene ancho de 60rem*/
+        max-width: 100%; /*El contenedor no puede superar los 60rem de alto*/
+        height: auto; /*Adapta altura automáticamente al contenido*/
+
+
+        & h2{ /*Título de la sección*/
+            color:var(--c-white); /*Color de la fuente*/
+            text-align: center; /*Centra el texto*/
+           
+        }
+        & .icons__cards{ /*Contenedor de las "cartas" de iconos, se encuentra en flex row*/
+            flex-wrap: wrap; /*Genera salto de línea*/
+            width: 100%; /*Ocupa el 100% del ancho de su contenedor padre*/
+            height: auto; /*Adapta altura automaticamente*/
+            gap:var(--s-md); /*Espacio entre elementos de 2.5rem*/ 
+
+            
+            & .icons__card{/*Contenedor individual de cada "carta"*/
+                background-color: var(--c-grey); /*Fondo contenedor*/
+                flex: 1 0 150px; /*Cada contenedor inicia con 150px, puede crecer si hay espacio y no se encoge*/
+                gap:var(--s-sm); /*Espacio entre elementos de 1rem*/
+                padding: var(--s-sm); /*Relleno en contenedor de 1rem*/
+                box-shadow: /*Sombrea los contenedores dando efecto de relieve*/
+                4px 4px 6px rgba(0, 0, 0, 0.15),  
+                -4px -4px 6px rgba(255, 255, 255, 0.5);
+                border-radius: var(--r-sm);/*Redondea los bordes de los contenedores con .500rem*/
+                max-width: 100%; /*no puede superar el ancho de su contenedor padre*/
+
+                & i{ /*icono de cada contenedor*/
+                 color:var(--c-green); /*Le cambio el color a verde*/
+                }
+
+                & span{ /*Texto del contenedor*/
+                 font:var(--f-link); /*Estilo de fuente*/
+                
+                }
+            }
+                
+        }
+    }
+}
+/* /CARACTERÍSTICAS */
+
+/*-----------------------------------------------------------------------------------*/
+
+/*CONOCIMIENTOS*/
+
+.skills{ /*Clase de la sección conocimientos*/
+   display: flex; /*Le damos display flex para poder alinear contenedor principal*/
+   justify-content: center; /*Centra contenedor en eje principal, en este caso horizontal*/
+
+    & .skills__block{ /*Contenedor principal, tiene flex column*/
+        align-items: center; /*Centra elementos en eje secundario, en este caso el horizontal*/
+        justify-content: end; /*Coloca elementos al final del eje principal, en este caso el vertical*/
+        width: 60rem; /*Define ancho del contenedor*/
+        max-width: 100%; /*No puede superar el ancho definido*/
+        padding:var(--s-md) var(--s-md) 0 var(--s-md); /*Da relleno al contenedor por todos los lados, excepto abajo*/
+        gap: var(--s-md);/*Genera espacio entre el título y el contenedor de contenido*/
+       
+
+        & h2{ /*Título de la sección*/
+            color:var(--c-green); /*Color de la fuente*/
+            text-align: center; /*Alínea texto al centro*/
+            
+        }
+
+        & .skills__content{ /*Contenedor de contenido de texto y vídeo, está en flex column*/
+           height: auto; /*Adapta la altura al contenido*/
+           max-width: 100%; /*No puede superar el ancho de su contenedor padre*/
+     
+            
+            & .skills__list{/*Contenedor de la lista de conocimientos, está en flex row*/
+                flex-wrap: wrap; /*Genera salto de línea de los elementos para responsive*/
+                justify-content: center; /*Centra elementos en eje principal, en este caso el horizontal*/
+                max-width: 100%; /*No puede superar ancho de su contenedor padre*/
+                height: auto; /*Adapta altura al contenido*/
+                gap:var(--s-md); /*Genera espacio entre los elementos*/
+              
+                & span{
+
+                    font:var(--f-link);
+                }
+            }
+
+            & .skills__video{/*Contenedor del vídeo*/
+                max-width: 100%; /*No puede superar el ancho máximo de su contendor padre*/
+
+                & video{
+                    width: 100%;/*Vídeo ocupa el 100% del espacio disponible*/
+                    height: auto; /*Mantiene la altura proporcional*/
+                }
+            }
+        }
+    }  
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+
+/*CONOCIMIENTOS*/
+
+
+/*-----------------------------------------------------------------------------------*/
+
+/*PROYECTOS*/
+
+.projects{ /*Clase de la sección de proyectos*/
+    display: flex; /*Ponemos display flex para alínear el contenedor al centro*/
+    justify-content: center; /*Centra contenedor en eje principal, en este caso horizontal*/
+
+    & .projects__block{ /*Clase del contenedor principal, está en flex column*/
+       align-items: center; /*Centra elementos en eje secundario, en este caso el horizontal*/
+       padding: var(--s-md); /*Da relleno al contenedor de 2.5rem*/
+       width: 65rem;/*Ancho del contenedor*/
+       max-width: 100%; /*No puede superar ancho definido*/
+       gap:var(--s-md); /*Genera espacio de 2.5 rem entre elementos del contenedor*/
+
+       & .projects__title{ /*Clase del contenedor de títulos, esta en flex row*/
+            align-items: center; /*Centra elementos en el eje secundario, en este caso el vertical*/
+            justify-content: space-between; /*Separa los elementos*/
+            flex-wrap: wrap; /*Genera salto de línea en responsive*/
+            width: 100%; /*Ocupa todo el ancho disponible*/
+            max-width: 100%; /*No puede superar el ancho de su contenedor padre*/
+            
+
+            & h2{
+                color: var(--c-green); /*Color de texto del título de la seccion*/
+            }
+
+            & h3{
+                font:var(--f-body); /*Color de texto del subtítulo de la sección*/
+            }
+        }
+        & .projects__content{ /*Clase del contenedor de imagenes*/
+            max-width: 100%; /*No puede superar el ancho de su contenedor padre*/
+            display: grid; /*Genera un grid con las imagenes*/
+            grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); /*Ayuda al responsive de grid*/
+            grid-template-rows: auto; /*Genera filas automaticas*/
+            gap: var(--s-xs); /*Espacio entre las imagenes de 1rem*/
+           
+
+            & .tall{
+                grid-row: span 2; /*Las imagenes que son mas largas verticalmente pues ocupan mas espacio, es decir, mas "celdas"*/
+                
+            }
+            
+
+            & .project__card{ /*Clase del contenedor que contiene las imagenes de cada proyecto*/
+               
+                & figure{ /*contiene la informacion de cada contenedor de proyecto*/
+                    position: relative; /*Mueve el elemento respecto su posición original, pero en este caso lo utilizamos para poder utilizar a continuación position absolute con la información*/
+                    height: 100%; /*Altura total*/
+                    width: 100%; /*Ancho total*/
+                    overflow: hidden; /*Oculta el contenido que se sale del contenedor*/
+                    border-radius: var(--r-sm); /*Damos redondez a los bordes de .500rem*/
+                    box-shadow: /*Sombrea el contenedor dando efecto de relieve*/
+                    4px 4px 6px rgba(0, 0, 0, 0.15),  
+                    -4px -4px 6px rgba(188, 188, 188, 0.5);
+                    cursor: pointer; /*Hace que aparezca una mano para que se entiende que es clicable*/
+
+                    & img{ /*imagenes de proyecto*/
+                        width: 100%; /*ocupan todo el ancho*/
+                        height: 100%;  /*Ocupan toda la altura*/
+                        border-radius:var(--r-sm) ; /*Redondez a los bordes de .500rem*/
+                        object-fit: cover; /*Hace que la imagen cubra todo el contenedor para evitar deformaciones*/
+                        transition: transform .3s ease; /*Lo que queremos que transiciones con el hover*/
+                    }
+
+                    &:hover img{ 
+                        transform: scale(1.1); /*Hace que al pasar el cursor crezca sutilmente la imagen*/
+                    }
+
+                    & .card__overlay{ /*Capa que aparece al hacer hover en cada imagen*/
+                        display: flex; /*Lo convertimos en flex column para poder organizar correctamente los elementos*/
+                        flex-direction: column;
+                        align-items: center;  /*Centra elementos en eje secundario, en este caso horizontal*/
+                        justify-content: center; /*Centra elementos en eje principal, en este caso vertical*/
+                        position: absolute; /*Me ayuda a poder colocar los elementos encima del contenedor que anteriormente he definido con position relative*/
+                        top:0; /*Coloca el elemento pegado al borde superior del contenedor*/
+                        width:100%; /*Ocupa todo el ancho disponible*/
+                        height: 100%; /*Ocupa alto disponible*/
+                        gap:var(--s-sm); /*Genera espacio entre elementos de 1rem*/
+                        background: rgba(34, 34, 34, 0.7); /*Genera una capa negra transparente*/
+                        border-radius: var(--r-sm); /*Da redondez a los bordes de 1rem*/
+                        transition: opacity .08s ease, visibility .08s ease, transform .08s ease;
+                        opacity: 0; /*Defino las transiciones que quiero que ocurran con hover*/
+                        visibility: hidden; /*Oculta el contenido*/
+                        text-align: center; /*Alínea el texto*/
+
+                        & h4{
+                            font: var(--f-sm); /*Estilo del título de cada categoria de proyecto*/
+                            color: var(--c-white);/*color de fuente*/
+                        }
+
+                    }
+                    &:hover .card__overlay{ /*Lo que ocurrirá al pasar el cursor por encima*/
+                        opacity: 1; /*Hace que lo que he definido en card__overlay tenga opacidad*/
+                        visibility:visible; /*Muestra el contenido de card__overlay*/
+                        transform: scale(1.1); /*Hace que crezca sutilmente el contenido*/
+                    }
+                    
+                }   
+
+            }
+        }
+    }
+}
+
+/* / PROYECTOS*/
+
+/*-----------------------------------------------------------------------------------*/
+
+/*CONTACTO*/
+.contact{ /*Clase de la sección de proyecto*/
+    background-color: var(--c-secondary-green); /*Fondo de la sección de contacto*/
+    & .contact__block{ /*Contenedor principal, está en flex column*/
+        flex-wrap: wrap;
+        width: 60rem; /*Ancho del contenedor*/
+        max-width: 100%; /*Ancho máximo, no puede superar lo definido*/
+        align-items: center; /*Alínea en el eje secundario, en este caso el horizontal*/
+        justify-content: center; /*Alínea en el eje principal, en este caso el vertical*/
+        margin: auto; /*General el mismo margen por todos los lados*/
+        padding:var(--s-md); /*Genera relleno de 2.5rem*/
+        
+        background-color:var(--c-secondary-green); /*Color de fondo del contenedor*/
+        
+        .contact__form{ /*Contenedor del formulario de contacto está en flex column*/
+            flex-wrap: wrap;
+            justify-content: center;/*Alínea en el eje principal, en este caso el vertical*/
+            align-items: center;/*Alínea en el eje secundario, en este caso el horizontal*/
+            padding: var(--s-xs);/*Genera relleno de 0.5rem*/
+            gap: var(--s-md); /*Genera espacio entre título y formulario de 2.5rem */
+            width:100%;
+
+            & h2{
+                
+            color:var(--c-white); /*Color de fuente*/
+                
+            }
+
+            & .form{ /*Formulario, está en flex column*/
+                width:30rem; /*Ancho del forumlario*/
+                max-width: 100%; /*No puede superar el ancho definido*/
+                gap:var(--s-xs); /*Genera espacio entre los inputs de 0.5rem*/
+
+                & label{
+                    display:none; /*Los labels no son visibles para el usuario*/
+                }
+
+                & .name__contact{ /*Contenedor de nombre y apellido, está en flex row*/
+                    align-content: center; /*Centra elementos en eje secundario, en este caso el vertical*/
+                    gap:var(--s-xs);  /*Genera espacio entre los dos inputs de 0.5rem*/
+                    
+
+                }
+
+                & .contact__method{ /*Contenedor de e-mail y número de teléfono, está en flex row */
+                    gap:var(--s-xs); /*Genera espacio entre los dos inputs de 0.5rem*/
+                }
+            }
+            
+        }
+    }
+}
+/* / CONTACTO*/
+
+/*-----------------------------------------------------------------------------------*/
+
+/*--FOOTER--*/
+.footer__block{ /*Clase del pie de página, esta en flex row*/
+    align-items: center; /*Centra elementos en eje secundario, en este caso el vertical*/
+    justify-content: center; /*Centra elementos en eje principal, en este caso el horizontal*/
+    padding: var(--s-md); /*Genera relleno de 2.5rem*/
+    border-radius:var(--r-sm) var(--r-sm) 0 var(--r-sm); /*Redondea bordes de arriba izquierda y derecha, abajo no.*/
+    box-shadow:  /*Sombrea el contenedor para dar efecto de relieve*/
+    4px 4px 6px rgba(0, 0, 0, 0.15),  
+    -4px -4px 6px rgba(188, 188, 188, 0.5);
+    & .footer__contact{ /*Contenedor de contenido, esta en flex column*/
+        width: 100%; /*Ocupa el 100% del espacio*/
+        justify-content: center; /*Centra contenido en eje principal, en este caso el vertical*/
+        align-items: center;  /*Centra contenido en eje secundario, en este caso el horizontal*/
+        
+        & .footer__icons{ /*Contenedor de vías de contacto, está en flex row*/
+          flex-wrap: wrap; /*Genera salto de línea en responsive*/
+          gap:var(--s-sm); /*Genera espacio entre los elementos de 1rem*/
+        }
+    }
+
+}
+      
+/*--FOOTER--*/
+
+/*-----------------------------------------------------------------------------------*/
+
+/*BANNER FICHAS DE PROYECTO*/
+
+.project{ /*Clase del banner de las fichas de proyecto, todas las fichas son iguales. Estan en flex row*/
+    padding:var(--s-lg); /*Genera relleno en la sección de 3.5 rem*/
+    height: 50vh; /*Ocupa la mitad de la pantalla en cuanto a altura*/
+    flex-wrap: wrap; /*Genera salto de línea para el responsive*/
+    justify-content: center; /*Centra elemento en el eje principal, en este caso el horizontal*/
+    align-content: center; /*Centra elemento en el eje secundaro, en este caso el vertical*/ 
+    background-image: url(../media/fondo\ responsive.webp); /*Fondo de sección*/
+    & .banner__block{ /*Clase de contenedor principal*/
+        & .banner__title{ /*Contenedor del h1*/
+            & h1{
+                font:var(--f-lg); /*Estilo de fuente del h1*/
+                color:var(--c-green); /*Color de fuente*/
+                text-align: center; /*Alínea texto al centro*/
+            }
+        }
+    }
+}
+
+/* / BANNER FICHAS DE PROYECTO*/
+
+
+/*OPCIONES DE DISEÑO - ANGELUS*/
+.options{ /*Clase de la sección de ficha de proyecto, todas las páginas de proyecto serán iguales*/
+    display:flex; /*Pongo flex para poder centrar bien el contenedor principal*/
+    padding: var(--s-md);
+    height:auto; /*Hace que la altura de la sección se adapte automáticamente al contenido*/
+    min-height: 50vh; /*Altura mínia de la sección*/
+    background-color:var(--c-secondary-green);
+
+    & .options__block{ /*Clase del contenedor principal*/
+        display:flex; /*Le doy flex column para orgaizar los elementos uno encima de otro */
+        flex-direction: column;
+        align-items:center; /*Centra elementos en el eje secundario, en este caso el horizontal*/
+        justify-content: center;  /*Centra elementos en el eje principal, en este caso el vertical*/
+        background-color: var(--c-grey);
+        box-shadow: 
+        0px 0px 10px  rgba(45, 45, 45, 0.15);  
+        padding:var(--s-sm); /*Relleno interior del conenedor de 1rem*/
+        margin: auto; /*Centra automaticamente el contenedor*/
+        width: 60rem; /*Ancho del contenedor*/
+        max-width:100%; /*No puede superar ese ancho*/
+        height:auto; /*Adapta la altura al contenido, evitando que se salga*/
+        border-radius:var(--r-sm); /*Redondea bordes*/
+        gap:var(--s-md); /*Genera espacios entre los elementos del contenedor*/
+
+        & .option__title{
+            padding: var(--s-sm); /*Le doy padding para que no quede tan pegado a los bordes*/
+            text-align: center; /*Centra el texto*/
+        }
+
+        & .options__list{ /*Contenedor de opciones donde hacemos click para ver la información*/
+            display:flex; /*flex row para que los elementos aparezcan en fila*/
+            flex-direction:row;
+            align-items: center; /*Centra elementos en el eje secundario, en este caso el vertical*/
+            justify-content: center; /*Centra elementos en el eje principal, en este caso el horizontal*/
+            gap:var(--s-md); /*Genera espacio entre elementos de 2.5 rem*/
+            max-width: 100%; /*No puede superar el 100% de su contenedor padre*/
+            list-style: none; /*Quita estilo predeterminado de las listas*/
+           
+ 
+            & .option{ /*Contenedor individual de cada opción*/
+                background-color:rgb(234, 234, 234);
+                box-shadow: 
+                4px 4px 6px rgba(45, 45, 45, 0.15),  
+                -4px -4px 6px rgba(227, 227, 227, 0.5);
+                padding: var(--s-sm);
+                border-radius: var(--r-sm);
+                cursor: pointer; /*Hace que aparezca la mano cuando estamos encima*/
+                transition: transform .3s ease, color .3s ease; /*Defino lo que quiero que transicione al hacer hover*/
+                font:var(--f-link);
+                
+            }
+        }
+        & .options__content{ /*Clase del contenedor que contiene toda la información del proyecto*/
+            display:flex;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+
+            & .text{ /*Clase del contenedor que contiene la información individual de cada proyecto*/
+                padding: var(--s-md);
+                top: 0;
+                display:none; /*display none para que no aparezca a no ser que demos click*/
+                
+                & .design__objective{ /*Clase del contenedor de texto. Objetivo del proyecto*/
+                    margin: 0 0 var(--s-sm);
+                    & p{
+                        text-align: justify;
+                        line-height: 1.5; /*Genera interlineado*/
+                    }
+                }
+                
+                & .design__description{ /*Clase del contenedor de texto. Descripción del proyecto*/
+                    margin: 0 0 var(--s-sm);
+                    & p{
+                        text-align: justify;
+                        line-height: 1.5;
+                    }
+                }
+                
+                & .design__images{/*Clase del contenedor de texto. Imágenes del proyecto*/
+                    display:grid;
+                    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+                    grid-template-rows: auto;        
+                    gap:var(--s-sm);
+                    width: 100%;
+                    height: 100%;
+
+                    & .image{ /*Imagen individual de cada proyecto*/
+                      border-radius: var(--r-sm);  
+                      width: 100%;
+                      height: 100%;
+                      object-fit: cover;
+                      cursor: pointer;
+                      transition:transform 1s ease; /*Al hacer hover crece sutilmente*/
+                    }
+                }
+
+                & .big{ /*Contenedor que aparece cuando hacemos click a una de las imagenes y se hacen grandes*/
+                    display:flex; /*Flex Column para poder colocar el botón de cerrar encima de la imagen*/
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
+                    gap: var(--s-sm);
+                    padding: var(--s-md);
+                    position: fixed; /*Cuando se abre se queda fija en pantalla*/
+                    top: 0;
+                    left:0;
+                    backdrop-filter: blur(0.5rem); /*Cuando la imagen se abre el fondo se hace borroso*/
+                    -webkit-backdrop-filter: blur(0.5rem); 
+                    opacity:0; /*Hace que no se vea hasta que hacemos click*/
+                    pointer-events: none;  /*Evita que cree problemas con el cursor, ya que al poner opacity:0 quiere decir que no se ve, pero sigue ahí*/
+
+                    & .close__image{ /*Botón de cerrar*/
+                        background: none; /*Elimina fondo predeterminado dle botón*/
+                        border: none; /*Elimina bordes predeterminados del botón*/
+                        font:var(--f-md); /*Tamaño del botón*/
+                        color:var(--c-black); /*Color del botón*/
+                        cursor: pointer; /*Que aparezca la mano para dar click*/
+                        transition:transform 1s ease; /*Lo que transiciona al hacer hover en el botón*/
+                    }
+
+                    & .big__image{ /*Imagen que aparece cuando se hace grande*/
+                        width: auto; /*Se adapta el ancho automaticamente a la imagen que se quiera abrir*/
+                        height: auto; /*Se adapta el alto automaticamente a la imagen que se quiera abrir*/
+                        max-width: 100%; 
+                        max-height: 90vh;
+                        border-radius: var(--r-sm);
+                        box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.5);
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+
+
+/*Defino lo que debe ocurrir cuando a la clase .option se le añada la clase activo*/
+.options .options__list .option.activo{
+    background-color: var(--c-green);
+    color:var(--c-white);
+}
+/*Defino lo que debe ocurrir cuando a la clase .option se le añada la clase activo*/
+.options .options__content .text.activo{
+    display:block;
+}
+
+/*Define que cuando demos click a la imagen se aplicará al contenedor la clase "is Active" y ,por lo tanto, se aplicarán las propiedades definidas.  */
+.options .options__block .options__content .big.isActive{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+@media (max-width:750px) {
+
+    header{ /*header responsive*/
+        justify-content: space-between; 
+        border-radius: 0; 
+        max-width: 100%;
+
+        & .abrir-menu{ /*Es lo que nos permite abrir el menú y ver el nav*/
+            display: block; /*En el desktop he puesto que no se vea pero en responsive si*/
+            font: var(--f-headings-md);
+        }
+
+        & .nav{ /*Cambio estilo del nav, esta vez en column*/
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            position: absolute; /*Para que se coloque encima del header cuando se abra*/
+            top: 0; /*pegado arriba de la página*/
+            right: 0; /*pegado a la derecha de la página*/
+            padding: var(--s-lg);
+            gap: var(--s-md);
+            background-color:var(--c-white);
+            align-content:start;
+            box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden; /*Esconde el contenido hasta que se le de click y se le aplique la clase visible*/
+            
+
+            & .cerrar-menu{/*Lo que nos permitirá cerrar el menú*/
+                display: block;
+                cursor: pointer;
+                font: var(--f-headings-md);
+                
+            }
+
+            & ul{ /*Estilo de la lista de elementos del nav*/
+                display: flex;
+                flex-direction: column;
+                align-items: end;
+                gap: var(--s-xl);
+
+            }
+        }
+
+        & .visible{ /*Clase que se le aplicará al nav cuando se le de click a abrir menú*/
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    .banner{ /*Fondo del banner de portada en responsive*/
+        & .banner__background{
+            background-image: url(../media/fondo\ responsive.webp);
+            & .banner__content{
+                & h1{
+                    font-size: var(--s-md);
+                }
+            }
+        }
+
+    }
+   
+}
+
+
+
+
+
+    
+
